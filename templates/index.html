@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Classification</title>
+</head>
+<body>
+    <h1>Brain Tumor Classification</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="image" accept="image/*" required>
+        <button type="submit">Upload and Predict</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length > 0) {
+                formData.append('image', fileInput.files[0]);
+
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+            } else {
+                alert('Please select a file to upload.');
+            }
+        });
+    </script>
+</body>
+</html>
