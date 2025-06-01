@@ -66,3 +66,7 @@ Use the web interface to upload MRI images and get predictions!
 
 ![image](https://github.com/Anshxy/Brain-Tumour-Identification-Classification/assets/96556167/010546df-2612-48ed-a310-0c679220708a)
 - Note that this is a demo interface used for purely testing
+
+## Author
+
+By Ansh Rawat and Jun Oh
